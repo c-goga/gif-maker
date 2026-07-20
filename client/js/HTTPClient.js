@@ -21,13 +21,13 @@ export default {
     },
 
     post: (url, data) => {
-        const isFormData = data instanceof FormData;
+        const isFormData = data instanceof FormData; // need this for multer
 
         return fetch(BASE_URL_PATH + url, {
             method: 'POST',
-            body: isFormData ? data : JSON.stringify(data),
+            body: isFormData ? data : JSON.stringify(data), // need this for multer
             headers:
-                isFormData ? undefined : {'Content-Type': 'application/json'},
+                isFormData ? undefined : {'Content-Type': 'application/json'}, // need this for multer
         })
         .then(processJSONResponse)
         .catch(handleError);
